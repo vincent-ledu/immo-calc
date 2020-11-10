@@ -1,0 +1,11 @@
+{
+  "name": "immo-calc-front",
+  "version": "1.0.0",
+  "description": "front part of immo-calc",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Vincent Le Dû",
+  "license": "WTFPL"
+}
