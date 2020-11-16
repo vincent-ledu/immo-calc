@@ -1,0 +1,83 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="index.css" />
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
+  </head>
+
+  <body>
+
+    <div id="app">
+      <p>
+        <label>Prix d'achat du bien :</label>
+        <input v-model="asset_price" />
+      </p>
+      <p>
+        <label>Pourcentage des frais de notaire :</label>
+        <input v-model="notary_fees_percent" />
+      </p>
+      <p>
+        <label>Frais de notaire</label>
+        <input disabled readonly v-model="notary_fees" />
+      </p>
+      <p>
+        <label>Revenu net mensuel: </label>
+        <input v-model="income" />
+      </p>
+      <p>
+        <label>Autre charge (autres crédits, pensions, ...): </label>
+        <input v-model="other_expense" />
+      </p>
+      <p>
+        <label>Apport personnel (hors vente d'autres biens) :</label>
+        <input v-model="personnal_money" />
+      </p>
+      <p>
+        <label>Besoin d'un pr&ecirc;t relai ? </label>
+        <select v-model="relay_loan">
+          <option value="false">Non</option>
+          <option value="true">Oui</option>
+        </select>
+        <div v-if="relay_loan">
+          <label>Prix de vente r&eacute;sidence(s) :</label>
+          <input v-model="asset_sell_price" />
+          <p>
+            <label>Montant du pr&ecirc;t relai :</label>
+            <input v-model="relay_loan_amount" />
+          </p>
+          <p>
+            <label>Dur&eacute;e (mois) :</label>
+            <input v-model="relay_loan_duration" />
+          </p>
+          <p>
+            <label>Taux : </label>
+            <input v-model="relay_loan_tx" />
+          </p>
+        </div>
+          <p>
+            <label>Montant du pr&ecirc;t principal :</label>
+            <input v-model="main_loan_amount" />
+          </p>
+          <p>
+            <label>Dur&eacute;e (mois) :</label>
+            <input v-model="main_loan_duration" />
+          </p>
+          <p>
+            <label>Taux : </label>
+            <input v-model="main_loan_tx" />
+          </p>
+      </p>
+      <hr>
+      <p>
+        <label>Mensualité : {{ monthly_payment }}</label>
+      </p>
+      <p>
+        <label>Taux d'endettement : {{ indebtment_rate }}</label>
+      </p>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
