@@ -4,6 +4,15 @@ body {
   padding: 0;
 }
 
+.box {
+  display: flex;
+  padding: 5px;
+}
+
+.loan {
+  padding: 5px;
+}
+
 .input-euro {
   position: relative;
 }

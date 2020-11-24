@@ -24,107 +24,140 @@
       integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
       crossorigin="anonymous"
     ></script>
-    <div class="container">
-      <div id="app">
-        <div id="acquisition" name="acquisition">
-          <p class="row">
-            <label class="col-sm">Prix net vendeur :</label>
-            <input
-              class="col-sm eur-input"
-              id="net_seller_price"
-              name="net_seller_price"
-              v-model="net_seller_price"
-            />
-          </p>
-          <p class="row">
-            <label class="col-sm">Frais d'agence :</label>
-            <input
-              class="col-sm"
-              id="agency_fees"
-              name="agency_fees"
-              v-model="agency_fees"
-            />
-          </p>
-          <p class="row">
-            <label class="col-sm">Type de bien :</label>
-            <select
-              id="asset_type"
-              name="asset_type"
-              v-model="asset_type"
-              class="col-sm"
-            >
-              <option value="0">Ancien ou terrain</option>
-              <option value="1">Neuf</option>
-            </select>
-          </p>
-        </div>
-        <div id="notary" name="notary">
-          <p class="row">
-            <label class="col-sm">Pourcentage des frais de notaire :</label>
-            <input
-              id="notary_fees_percent"
-              name="notary_fees_percent"
-              disabled
-              readonly
-              v-model="notary_fees_percent"
-              class="col-sm"
-            />
-          </p>
-          <p class="row">
-            <label class="col-sm">Frais de notaire</label>
-            <input
-              id="notary_fees"
-              name="notary_fees"
-              disabled
-              readonly
-              v-model="notary_fees"
-              class="col-sm"
-            />
-          </p>
-        </div>
-        <div id="income_expense">
-          <p class="row">
-            <label class="col-sm">Revenu net mensuel: </label>
-            <input id="income" name="income" v-model="income" class="col-sm" />
-          </p>
-          <p class="row">
-            <label class="col-sm"
-              >Autre charge (autres crédits, pensions, ...):
-            </label>
-            <input
-              id="other_expense"
-              name="other_expense"
-              v-model="other_expense"
-              class="col-sm"
-            />
-          </p>
-          <p class="row">
-            <label class="col-sm"
-              >Apport personnel (hors vente d'autres biens) :</label
-            >
-            <input
-              id="personnal_money"
-              name="personnal_money"
-              v-model="personnal_money"
-              class="col-sm"
-            />
-          </p>
-        </div>
-        <div id="relay" name="relay">
-          <p class="row">
-            <label class="col-sm">Besoin d'un prêt relais ? </label>
-            <select
-              id="relay_loan"
-              name="relay_loan"
-              v-model="relay_loan"
-              class="col-sm"
-            >
-              <option value="0">Non</option>
-              <option value="1">Oui</option>
-            </select>
-          </p>
-          <div v-if="relay_loan == 1">
-            <p class="row">
+    <div id="app">
+      <div class="container">
+        <p>
+          <label>Besoin d'un prêt relais ? </label>
+          <select
+            id="relay_loan"
+            name="relay_loan"
+            v-model="relay_loan"
+            class="col-sm"
+          >
+            <option value="0">Non</option>
+            <option value="1">Oui</option>
+          </select>
+        </p>
+        <div class="box">
+          <div class="loan" id="acquisition" name="acquisition">
+            <h3>Bien acheté</h3>
+            <p>
+              <label class="col-sm">Prix net vendeur :</label>
+              <input
+                class="col-sm eur-input"
+                id="net_seller_price"
+                name="net_seller_price"
+                v-model="net_seller_price"
+              />
+            </p>
+            <p>
+              <label class="col-sm">Frais d'agence :</label>
+              <input
+                class="col-sm"
+                id="agency_fees"
+                name="agency_fees"
+                v-model="agency_fees"
+              />
+            </p>
+            <p>
+              <label class="col-sm">Type de bien :</label>
+              <select
+                id="asset_type"
+                name="asset_type"
+                v-model="asset_type"
+                class="col-sm"
+              >
+                <option value="0">Ancien ou terrain</option>
+                <option value="1">Neuf</option>
+              </select>
+            </p>
+            <h3>Frais de notaire</h3>
+            <p>
+              <label class="col-sm">Pourcentage des frais de notaire :</label>
+              <input
+                id="notary_fees_percent"
+                name="notary_fees_percent"
+                disabled
+                readonly
+                v-model="notary_fees_percent"
+                class="col-sm"
+              />
+            </p>
+            <p>
+              <label class="col-sm">Estimation des frais de notaire</label>
+              <input
+                id="notary_fees"
+                name="notary_fees"
+                disabled
+                readonly
+                v-model="notary_fees"
+                class="col-sm"
+              />
+            </p>
+            <p>
+              <h3>Revenus, charges et apports</h3>
+              <label class="col-sm">Revenu net mensuel: </label>
+              <input
+                id="income"
+                name="income"
+                v-model="income"
+                class="col-sm"
+              />
+            </p>
+            <p>
+              <label class="col-sm"
+                >Autre charge (autres crédits, pensions, ...):
+              </label>
+              <input
+                id="other_expense"
+                name="other_expense"
+                v-model="other_expense"
+                class="col-sm"
+              />
+            </p>
+            <p>
+              <label class="col-sm"
+                >Apport personnel (hors vente d'autres biens) :</label
+              >
+              <input
+                id="personnal_money"
+                name="personnal_money"
+                v-model="personnal_money"
+                class="col-sm"
+              />
+            </p>
+            <p>
+              <h3>Caractéristiques du prêt</h3>
+              <label class="col-sm">Montant du prêt principal :</label>
+              <input
+                id="main_loan_amount"
+                name="main_loan_amount"
+                v-model="main_loan_amount"
+                class="col-sm"
+              />
+            </p>
+            <p>
+              <label class="col-sm">Durée (mois) :</label>
+              <input
+                id="main_loan_duration"
+                name="main_loan_duration"
+                v-model="main_loan_duration"
+                class="col-sm"
+              />
+            </p>
+            <p>
+              <label class="col-sm">Taux : </label>
+              <input
+                id="main"
+                name="main_loan_tx"
+                v-model="main_loan_tx"
+                class="col-sm"
+              />
+            </p>
+          </div>
+          <div v-if="relay_loan == 1" class="loan" id="relay" name="relay">
+            <h3>Prêt relais</h3>
+            <p>
               <label class="col-sm">Prix de vente résidence(s) :</label>
               <input
                 id="asset_sell_price"
@@ -133,7 +166,16 @@
                 class="col-sm"
               />
             </p>
-            <p class="row">
+            <p>
+              <label class="col-sm">Pourcentage sur le bien en vente :</label>
+              <input
+                id="percent_sell_price"
+                name="percent_sell_price"
+                v-model="percent_sell_price"
+                class="col-sm"
+              />
+            </p>
+            <p>
               <label class="col-sm">Montant du prêt relais :</label>
               <input
                 id="relay_loan_amount"
@@ -144,7 +186,7 @@
                 class="col-sm"
               />
             </p>
-            <p class="row">
+            <p>
               <label class="col-sm">Durée (mois) :</label>
               <input
                 id="relay_loan_duration"
@@ -153,7 +195,7 @@
                 class="col-sm"
               />
             </p>
-            <p class="row">
+            <p>
               <label class="col-sm">Taux : </label>
               <input
                 id="relay_loan_tx"
@@ -164,53 +206,103 @@
             </p>
           </div>
         </div>
-        <div id="main_loan" name="main_loan">
-          <p class="row">
-            <label class="col-sm">Montant du prêt principal :</label>
-            <input
-              id="main_loan_amount"
-              name="main_loan_amount"
-              v-model="main_loan_amount"
-              class="col-sm"
-            />
+        <div id="insurance">
+            <h3>Assurances</h3>
+            <p>
+              <label class="col-sm">Pourcentage assuré sur l'emprunteur : </label>
+              <input
+                id="percent_insurance_mortgagor"
+                name="percent_insurance_mortgagor"
+                v-model="percent_insurance_mortgagor"
+                class="col-sm"
+              />
+            </p>
+            <p>
+              <label class="col-sm">Taux de l'assurance sur l'emprunteur : </label>
+              <input
+                id="tx_insurance_mortgagor"
+                name="tx_insurance_mortgagor"
+                v-model="tx_insurance_mortgagor"
+                class="col-sm"
+              />
+            </p>
+            <p>
+              <label class="col-sm">Pourcentage assuré sur le co-emprunteur : </label>
+              <input
+                id="percent_insurance_comortgagor"
+                name="percent_insurance_comortgagor"
+                v-model="percent_insurance_comortgagor"
+                class="col-sm"
+              />
+            </p>
+            <p>
+              <label class="col-sm">Taux de l'assurance sur le co-emprunteur : </label>
+              <input
+                id="tx_insurance_comortgagor"
+                name="tx_insurance_comortgagor"
+                v-model="tx_insurance_comortgagor"
+                class="col-sm"
+              />
+            </p>
+        </div>
+        <hr>
+        <div>
+          <h3>Taux d'endettement</h3>
+          <p>
+            <label>Taux d'endettement : {{ indebtment_rate }}</label>
           </p>
-          <p class="row">
-            <label class="col-sm">Durée (mois) :</label>
-            <input
-              id="main_loan_duration"
-              name="main_loan_duration"
-              v-model="main_loan_duration"
-              class="col-sm"
-            />
+          <h3>Mensualités</h3>
+          <h4>Prêt principal</h4>
+          <p>
+            <label>Mensualité hors assurance : {{ monthly_payment }}</label>
           </p>
-          <p class="row">
-            <label class="col-sm">Taux : </label>
-            <input
-              id="main"
-              name="main_loan_tx"
-              v-model="main_loan_tx"
-              class="col-sm"
-            />
+          <p>
+            <label>Mensualité assurance emprunteur : {{ mortgagor_monthly_payment_insurance_main_loan }}</label>
+          </p>
+          <p>
+            <label>Mensualité assurance co-emprunteur : {{ comortgagor_monthly_payment_insurance_main_loan }}</label>
+          </p>
+          <p>
+            <label>Mensualité avec assurance comprise : {{ monthly_payment + mortgagor_monthly_payment_insurance_main_loan + comortgagor_monthly_payment_insurance_main_loan }}</label>
+          </p>
+          <div v-if="relay_loan == 1">
+            <h4>Prêt relais</h4>
+            <p>
+              <label
+                >Mensualité du prêt relais (intérêt) : {{ relay_loan_monthly_payment
+                }}</label
+              >
+            </p>
+            <p>
+              <label
+                >Mensualité assurance emprunteur : {{ mortgagor_relay_loan_monthly_payment_insurance
+                }}</label
+              >
+            </p>
+            <p>
+              <label
+                >Mensualité assurance co-emprunteur : {{ comortgagor_relay_loan_monthly_payment_insurance
+                }}</label
+              >
+            </p>
+            <p>
+              <label
+                >Mensualité assurance comprise : {{ relay_loan_monthly_payment + mortgagor_relay_loan_monthly_payment_insurance + comortgagor_relay_loan_monthly_payment_insurance
+                }}</label
+              >
+            </p>
+            <h3>Mensualité totale</h3>
+            <label>Relais + principal : {{ monthly_payment + mortgagor_monthly_payment_insurance_main_loan + comortgagor_monthly_payment_insurance_main_loan +
+              relay_loan_monthly_payment + mortgagor_relay_loan_monthly_payment_insurance + comortgagor_relay_loan_monthly_payment_insurance }}
+            </label>
+          </div>
+          <h3>Endettement</h3>
+          <p>
+            <label
+              >Mensualité maximale (&lt; 33%) : {{ max_monthly_payment }}
+            </label>
           </p>
         </div>
-        <hr />
-        <p>
-          <label>Mensualité du prêt principal: {{ monthly_payment }}</label>
-        </p>
-        <p>
-          <label
-            >Mensualité du prêt relais (intérêt) : {{ relay_loan_monthly_payment
-            }}</label
-          >
-        </p>
-        <p>
-          <label
-            >Mensualité maximal (&lt; 33%) : {{ max_monthly_payment }}
-          </label>
-        </p>
-        <p>
-          <label>Taux d'endettement : {{ indebtment_rate }}</label>
-        </p>
       </div>
     </div>
 
