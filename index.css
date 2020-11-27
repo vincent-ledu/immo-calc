@@ -4,14 +4,11 @@ body {
   padding: 0;
 }
 
-.box {
+/* .box {
   display: flex;
+  flex-wrap: wrap;
   padding: 5px;
-}
-
-.loan {
-  padding: 5px;
-}
+} */
 
 .input-euro {
   position: relative;
