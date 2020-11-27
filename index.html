@@ -26,20 +26,23 @@
     ></script>
     <div id="app">
       <div class="container">
-        <p>
-          <label>Besoin d'un prêt relais ? </label>
-          <select
-            id="relay_loan"
-            name="relay_loan"
-            v-model="relay_loan"
-            class="col-sm"
-          >
-            <option value="0">Non</option>
-            <option value="1">Oui</option>
-          </select>
-        </p>
         <div class="box">
-          <div class="loan" id="acquisition" name="acquisition">
+          <div id="relay_need" name="relay_need">
+            <h3>Type de prêt</h3>
+            <p>
+              <label class="col-sm">Besoin d'un prêt relais ? </label>
+              <select
+                id="relay_loan"
+                name="relay_loan"
+                v-model="relay_loan"
+                class="col-sm"
+              >
+                <option value="0">Non</option>
+                <option value="1">Oui</option>
+              </select>
+            </p>
+          </div>
+          <div id="acquisition" name="acquisition">
             <h3>Bien acheté</h3>
             <p>
               <label class="col-sm">Prix net vendeur :</label>
@@ -155,7 +158,7 @@
               />
             </p>
           </div>
-          <div v-if="relay_loan == 1" class="loan" id="relay" name="relay">
+          <div v-if="relay_loan == 1" id="relay" name="relay">
             <h3>Prêt relais</h3>
             <p>
               <label class="col-sm">Prix de vente résidence(s) :</label>
