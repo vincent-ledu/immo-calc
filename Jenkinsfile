@@ -1,6 +1,6 @@
 def archive_file = "immo-calc.tgz"
 
-node('nodejs12') {
+node('vprox') {
     stage('pulling code') {
         checkout scm
     }
@@ -13,8 +13,7 @@ node('nodejs12') {
         archiveArtifacts artifacts: "${archive_file}", defaultExcludes: false, followSymlinks: false, onlyIfSuccessful: true
     }
     stage('Deploy') {
-        sh label: 'Copy archive to dest', script: "scp ${archive_file} vprox:/tmp/"
-        sh label: 'Untar', script: "ssh vprox 'mkdir /tmp/immo-calc/ && tar xvzf ${archive_file} -C /tmp/immo-calc"
-        sh label: 'Deploy', script: "ssh vprox 'sudo sh -c \"rm -rf /var/www/https.bender42.freeboxos.fr/immo-calc && mv /tmp/immo-calc /var/www/https.bender42.freeboxos.fr/ && chown -R www-data:www-data /var/www/https.bender42.freeboxos.fr/immo-calc\""
+        sh label: 'Untar', script: "mkdir /tmp/immo-calc/ && tar xvzf ${archive_file} -C /tmp/immo-calc"
+        sh label: 'Deploy', script: "sudo sh -c \"rm -rf /var/www/https.bender42.freeboxos.fr/immo-calc && mv /tmp/immo-calc /var/www/https.bender42.freeboxos.fr/ && chown -R www-data:www-data /var/www/https.bender42.freeboxos.fr/immo-calc\""
     }
 }
