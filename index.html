@@ -254,6 +254,11 @@
           <p>
             <label>Taux d'endettement : {{ indebtment_rate }}</label>
           </p>
+          <p>
+            <label>
+              Mensualité maximale (&lt; 33%) : {{ max_monthly_payment }}
+            </label>
+          </p>
           <h3>Mensualités</h3>
           <h4>Prêt principal</h4>
           <p>
@@ -267,6 +272,11 @@
           </p>
           <p>
             <label>Mensualité avec assurance comprise : {{ monthly_payment + mortgagor_monthly_payment_insurance_main_loan + comortgagor_monthly_payment_insurance_main_loan }}</label>
+          </p>
+          <p>
+            <lable>
+              Coût total du crédit: {{ total_cost_main_loan }}
+            </lable>
           </p>
           <div v-if="relay_loan == 1">
             <h4>Prêt relais</h4>
@@ -299,12 +309,7 @@
               relay_loan_monthly_payment + mortgagor_relay_loan_monthly_payment_insurance + comortgagor_relay_loan_monthly_payment_insurance }}
             </label>
           </div>
-          <h3>Endettement</h3>
-          <p>
-            <label
-              >Mensualité maximale (&lt; 33%) : {{ max_monthly_payment }}
-            </label>
-          </p>
+          
         </div>
       </div>
     </div>

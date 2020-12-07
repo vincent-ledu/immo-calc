@@ -15,20 +15,20 @@ const NOTARY_PERCENT_NEW = 3.6;
 const app = new Vue({
   el: "#app",
   data: {
-    net_seller_price: 650750,
-    agency_fees: 32250,
+    net_seller_price: 685000,
+    agency_fees: 0,
     asset_type: ASSET_TYPE.OLD,
 
     main_loan_tx: 1.2,
     main_loan_duration: 300,
 
-    relay_loan: 1,
+    relay_loan: 0,
     relay_loan_tx: 1.35,
     relay_loan_duration: 24,
     asset_sell_price: 410000,
     percent_sell_price: 70,
 
-    personnal_money: 200000,
+    personnal_money: 600000,
     income: 5500,
     other_expense: 0,
 
@@ -38,6 +38,15 @@ const app = new Vue({
     tx_insurance_comortgagor: 0.15,
   },
   computed: {
+    total_cost_main_loan: function () {
+      return (
+        (this.monthly_payment +
+          this.mortgagor_monthly_payment_insurance_main_loan +
+          this.comortgagor_monthly_payment_insurance_main_loan) *
+          this.main_loan_duration -
+        this.main_loan_amount
+      );
+    },
     indebtment_rate: function () {
       return (
         Math.round(
