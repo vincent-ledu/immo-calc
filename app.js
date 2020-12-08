@@ -9,7 +9,7 @@ const ASSET_TYPE = {
   NEW: 1,
 };
 
-const NOTARY_PERCENT_OLD = 7.8;
+const NOTARY_PERCENT_OLD = 7.1;
 const NOTARY_PERCENT_NEW = 3.6;
 
 const app = new Vue({
